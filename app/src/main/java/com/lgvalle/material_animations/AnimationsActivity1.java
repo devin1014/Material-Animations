@@ -13,7 +13,8 @@ import android.widget.LinearLayout;
 
 import com.lgvalle.material_animations.databinding.ActivityAnimations1Binding;
 
-public class AnimationsActivity1 extends BaseDetailActivity {
+public class AnimationsActivity1 extends BaseDetailActivity
+{
     private ImageView square;
     private ViewGroup viewRoot;
     private boolean sizeChanged;
@@ -22,7 +23,8 @@ public class AnimationsActivity1 extends BaseDetailActivity {
     private Sample sample;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         bindData();
         setupWindowAnimations();
@@ -30,35 +32,44 @@ public class AnimationsActivity1 extends BaseDetailActivity {
         setupToolbar();
     }
 
-    private void setupWindowAnimations() {
+    private void setupWindowAnimations()
+    {
         getWindow().setReenterTransition(new Fade());
     }
 
-    private void bindData() {
+    private void bindData()
+    {
         ActivityAnimations1Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_animations1);
         sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
         binding.setAnimationsSample(sample);
     }
 
-    private void setupLayout() {
+    private void setupLayout()
+    {
         square = (ImageView) findViewById(R.id.square_green);
         viewRoot = (ViewGroup) findViewById(R.id.sample3_root);
-        findViewById(R.id.sample3_button1).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sample3_button1).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 changeLayout();
             }
         });
-        findViewById(R.id.sample3_button2).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sample3_button2).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 changePosition();
             }
         });
 
-        findViewById(R.id.sample3_button3).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.sample3_button3).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 Intent i = new Intent(AnimationsActivity1.this, AnimationsActivity2.class);
                 i.putExtra(EXTRA_SAMPLE, sample);
                 transitionTo(i);
@@ -66,13 +77,17 @@ public class AnimationsActivity1 extends BaseDetailActivity {
         });
     }
 
-    private void changeLayout() {
+    private void changeLayout()
+    {
         TransitionManager.beginDelayedTransition(viewRoot);
 
         ViewGroup.LayoutParams params = square.getLayoutParams();
-        if (sizeChanged) {
+        if (sizeChanged)
+        {
             params.width = savedWidth;
-        } else {
+        }
+        else
+        {
             savedWidth = params.width;
             params.width = 200;
         }
@@ -80,19 +95,22 @@ public class AnimationsActivity1 extends BaseDetailActivity {
         square.setLayoutParams(params);
     }
 
-    private void changePosition() {
+    private void changePosition()
+    {
         TransitionManager.beginDelayedTransition(viewRoot);
 
         LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) square.getLayoutParams();
-        if (positionChanged) {
+        if (positionChanged)
+        {
             lp.gravity = Gravity.CENTER;
-        } else {
+        }
+        else
+        {
             lp.gravity = Gravity.LEFT;
         }
         positionChanged = !positionChanged;
         square.setLayoutParams(lp);
     }
-
 
 
 }

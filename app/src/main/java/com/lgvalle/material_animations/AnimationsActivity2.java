@@ -15,7 +15,8 @@ import com.lgvalle.material_animations.databinding.ActivityAnimations2Binding;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AnimationsActivity2 extends BaseDetailActivity {
+public class AnimationsActivity2 extends BaseDetailActivity
+{
 
     private static final int DELAY = 100;
     private Scene scene0;
@@ -26,7 +27,8 @@ public class AnimationsActivity2 extends BaseDetailActivity {
     private final List<View> viewsToAnimate = new ArrayList<>();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         bindData();
         setupLayout();
@@ -34,50 +36,62 @@ public class AnimationsActivity2 extends BaseDetailActivity {
         setupWindowAnimations();
     }
 
-    private void bindData() {
+    private void bindData()
+    {
         ActivityAnimations2Binding binding = DataBindingUtil.setContentView(
                 this, R.layout.activity_animations2);
         Sample sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
         binding.setAnimationsSample(sample);
     }
 
-    private void setupWindowAnimations() {
+    private void setupWindowAnimations()
+    {
         getWindow().setEnterTransition(TransitionInflater.from(this).inflateTransition(
                 R.transition.slide_from_bottom));
-        getWindow().getEnterTransition().addListener(new Transition.TransitionListener() {
+        getWindow().getEnterTransition().addListener(new Transition.TransitionListener()
+        {
             @Override
-            public void onTransitionStart(Transition transition) {
+            public void onTransitionStart(Transition transition)
+            {
             }
 
             @Override
-            public void onTransitionCancel(Transition transition) {
+            public void onTransitionCancel(Transition transition)
+            {
             }
 
             @Override
-            public void onTransitionPause(Transition transition) {
+            public void onTransitionPause(Transition transition)
+            {
             }
 
             @Override
-            public void onTransitionResume(Transition transition) {
+            public void onTransitionResume(Transition transition)
+            {
             }
 
             @Override
-            public void onTransitionEnd(Transition transition) {
+            public void onTransitionEnd(Transition transition)
+            {
                 getWindow().getEnterTransition().removeListener(this);
                 TransitionManager.go(scene0);
             }
         });
     }
 
-    private void setupLayout() {
+    private void setupLayout()
+    {
         final ViewGroup activityRoot = (ViewGroup) findViewById(R.id.buttons_group);
         ViewGroup sceneRoot = (ViewGroup) findViewById(R.id.scene_root);
 
         scene0 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene0, this);
-        scene0.setEnterAction(new Runnable() {
+        scene0.setEnterAction(new Runnable()
+        {
             @Override
-            public void run() {
-                for (int i = 0; i < viewsToAnimate.size(); i++) {
+            public void run()
+            {
+                for (int i = 0; i < viewsToAnimate.size(); i++)
+                {
                     View child = viewsToAnimate.get(i);
                     child.animate()
                             .setStartDelay(i * DELAY)
@@ -87,9 +101,11 @@ public class AnimationsActivity2 extends BaseDetailActivity {
                 }
             }
         });
-        scene0.setExitAction(new Runnable() {
+        scene0.setExitAction(new Runnable()
+        {
             @Override
-            public void run() {
+            public void run()
+            {
                 TransitionManager.beginDelayedTransition(activityRoot);
                 View title = scene0.getSceneRoot().findViewById(R.id.scene0_title);
                 title.setScaleX(0);
@@ -104,34 +120,42 @@ public class AnimationsActivity2 extends BaseDetailActivity {
         scene4 = Scene.getSceneForLayout(sceneRoot, R.layout.activity_animations_scene4, this);
 
         View button1 = findViewById(R.id.sample3_button1);
-        button1.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 TransitionManager.go(scene1, new ChangeBounds());
             }
         });
         View button2 = findViewById(R.id.sample3_button2);
-        button2.setOnClickListener(new View.OnClickListener() {
+        button2.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 TransitionManager.go(scene2, TransitionInflater.from(AnimationsActivity2.this).
                         inflateTransition(R.transition.slide_and_changebounds));
             }
         });
 
         View button3 = findViewById(R.id.sample3_button3);
-        button3.setOnClickListener(new View.OnClickListener() {
+        button3.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 TransitionManager.go(scene3, TransitionInflater.from(AnimationsActivity2.this).
                         inflateTransition(R.transition.slide_and_changebounds_sequential));
             }
         });
 
         View button4 = findViewById(R.id.sample3_button4);
-        button4.setOnClickListener(new View.OnClickListener() {
+        button4.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 TransitionManager.go(scene4, TransitionInflater.from(AnimationsActivity2.this).
                         inflateTransition(R.transition.slide_and_changebounds_sequential_with_interpolators));
             }

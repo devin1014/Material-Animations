@@ -12,11 +12,13 @@ import android.view.Gravity;
 import java.util.Arrays;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
     private List<Sample> samples;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setupWindowAnimations();
@@ -25,7 +27,8 @@ public class MainActivity extends AppCompatActivity {
         setupLayout();
     }
 
-    private void setupWindowAnimations() {
+    private void setupWindowAnimations()
+    {
         // Re-enter transition is executed when returning to this activity
         Slide slideTransition = new Slide();
         slideTransition.setSlideEdge(Gravity.LEFT);
@@ -34,7 +37,8 @@ public class MainActivity extends AppCompatActivity {
         getWindow().setExitTransition(slideTransition);
     }
 
-    private void setupSamples() {
+    private void setupSamples()
+    {
         samples = Arrays.asList(
                 new Sample(ContextCompat.getColor(this, R.color.sample_red), "Transitions"),
                 new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared Elements"),
@@ -43,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
         );
     }
 
-    private void setupToolbar() {
+    private void setupToolbar()
+    {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-    private void setupLayout() {
+    private void setupLayout()
+    {
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.sample_list);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

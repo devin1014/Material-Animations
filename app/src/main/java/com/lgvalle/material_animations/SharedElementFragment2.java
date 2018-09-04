@@ -8,10 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-public class SharedElementFragment2 extends Fragment {
+public class SharedElementFragment2 extends Fragment
+{
     private static final String EXTRA_SAMPLE = "sample";
 
-    public static SharedElementFragment2 newInstance(Sample sample) {
+    public static SharedElementFragment2 newInstance(Sample sample)
+    {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_SAMPLE, sample);
         SharedElementFragment2 fragment = new SharedElementFragment2();
@@ -20,7 +22,8 @@ public class SharedElementFragment2 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.activity_sharedelement_fragment2, container, false);
         Sample sample = (Sample) getArguments().getSerializable(EXTRA_SAMPLE);
 

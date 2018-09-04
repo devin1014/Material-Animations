@@ -9,12 +9,14 @@ import android.view.View;
 
 import com.lgvalle.material_animations.databinding.ActivityTransition2Binding;
 
-public class TransitionActivity2 extends BaseDetailActivity {
+public class TransitionActivity2 extends BaseDetailActivity
+{
 
     private int type;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         bindData();
         setupWindowAnimations();
@@ -22,34 +24,43 @@ public class TransitionActivity2 extends BaseDetailActivity {
         setupToolbar();
     }
 
-    private void bindData() {
+    private void bindData()
+    {
         ActivityTransition2Binding binding = DataBindingUtil.setContentView(this, R.layout.activity_transition2);
         Sample sample = (Sample) getIntent().getExtras().getSerializable(EXTRA_SAMPLE);
         type = getIntent().getExtras().getInt(EXTRA_TYPE);
         binding.setTransition2Sample(sample);
     }
 
-    private void setupWindowAnimations() {
+    private void setupWindowAnimations()
+    {
         Transition transition;
 
-        if (type == TYPE_PROGRAMMATICALLY) {
+        if (type == TYPE_PROGRAMMATICALLY)
+        {
             transition = buildEnterTransition();
-        }  else {
+        }
+        else
+        {
             transition = TransitionInflater.from(this).inflateTransition(R.transition.explode);
         }
         getWindow().setEnterTransition(transition);
     }
 
-    private void setupLayout() {
-        findViewById(R.id.exit_button).setOnClickListener(new View.OnClickListener() {
+    private void setupLayout()
+    {
+        findViewById(R.id.exit_button).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 finishAfterTransition();
             }
         });
     }
 
-    private Transition buildEnterTransition() {
+    private Transition buildEnterTransition()
+    {
         Explode enterTransition = new Explode();
         enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_long));
         return enterTransition;

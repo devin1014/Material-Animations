@@ -14,11 +14,13 @@ import android.widget.ImageView;
 /**
  * Created by lgvalle on 05/09/15.
  */
-public class SharedElementFragment1 extends Fragment {
+public class SharedElementFragment1 extends Fragment
+{
 
     private static final String EXTRA_SAMPLE = "sample";
 
-    public static SharedElementFragment1 newInstance(Sample sample) {
+    public static SharedElementFragment1 newInstance(Sample sample)
+    {
 
         Bundle args = new Bundle();
 
@@ -29,23 +31,28 @@ public class SharedElementFragment1 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         View view = inflater.inflate(R.layout.activity_sharedelement_fragment1, container, false);
         final Sample sample = (Sample) getArguments().getSerializable(EXTRA_SAMPLE);
 
         final ImageView squareBlue = (ImageView) view.findViewById(R.id.square_blue);
         DrawableCompat.setTint(squareBlue.getDrawable(), sample.color);
 
-        view.findViewById(R.id.sample2_button1).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.sample2_button1).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 addNextFragment(sample, squareBlue, false);
             }
         });
 
-        view.findViewById(R.id.sample2_button2).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.sample2_button2).setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
                 addNextFragment(sample, squareBlue, true);
             }
         });
@@ -53,7 +60,8 @@ public class SharedElementFragment1 extends Fragment {
         return view;
     }
 
-    private void addNextFragment(Sample sample, ImageView squareBlue, boolean overlap) {
+    private void addNextFragment(Sample sample, ImageView squareBlue, boolean overlap)
+    {
         SharedElementFragment2 sharedElementFragment2 = SharedElementFragment2.newInstance(sample);
 
         Slide slideTransition = new Slide(Gravity.RIGHT);

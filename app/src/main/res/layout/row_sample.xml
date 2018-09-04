@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -14,14 +15,15 @@
         android:id="@+id/sample_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center_vertical"
         android:clipToPadding="false"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="@dimen/spacing_double">
 
         <ImageView
             android:id="@+id/sample_icon"
             style="@style/MaterialAnimations.Icon.Small"
+            android:contentDescription="@null"
             android:src="@drawable/circle_24dp"
             app:colorTint="@{sample.color}" />
 
@@ -34,4 +36,5 @@
             tools:text="View animations sample" />
 
     </LinearLayout>
+
 </layout>

@@ -14,29 +14,36 @@ import com.lgvalle.material_animations.databinding.RowSampleBinding;
 
 import java.util.List;
 
-public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecyclerAdapter.SamplesViewHolder> {
+public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecyclerAdapter.SamplesViewHolder>
+{
     private final Activity activity;
     private final List<Sample> samples;
 
-    public SamplesRecyclerAdapter(Activity activity, List<Sample> samples) {
+    public SamplesRecyclerAdapter(Activity activity, List<Sample> samples)
+    {
         this.activity = activity;
         this.samples = samples;
     }
 
     @Override
-    public SamplesViewHolder onCreateViewHolder(ViewGroup parent, int position) {
+    public SamplesViewHolder onCreateViewHolder(ViewGroup parent, int position)
+    {
         RowSampleBinding binding = RowSampleBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
         return new SamplesViewHolder(binding.getRoot());
     }
 
     @Override
-    public void onBindViewHolder(final SamplesViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(final SamplesViewHolder viewHolder, final int position)
+    {
         final Sample sample = samples.get(viewHolder.getAdapterPosition());
         viewHolder.binding.setSample(sample);
-        viewHolder.binding.sampleLayout.setOnClickListener(new View.OnClickListener() {
+        viewHolder.binding.sampleLayout.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
-                switch (viewHolder.getAdapterPosition()) {
+            public void onClick(View v)
+            {
+                switch (viewHolder.getAdapterPosition())
+                {
                     case 0:
                         transitionToActivity(TransitionActivity1.class, sample);
                         break;
@@ -54,26 +61,30 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
         });
     }
 
-    private void transitionToActivity(Class target, Sample sample) {
+    private void transitionToActivity(Class target, Sample sample)
+    {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, true);
         startActivity(target, pairs, sample);
     }
 
 
-    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample, int transitionName) {
+    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample, int transitionName)
+    {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
                 new Pair<>(viewHolder.binding.sampleIcon, activity.getString(transitionName)));
         startActivity(target, pairs, sample);
     }
 
-    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample) {
+    private void transitionToActivity(Class target, SamplesViewHolder viewHolder, Sample sample)
+    {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(activity, false,
                 new Pair<>(viewHolder.binding.sampleIcon, activity.getString(R.string.square_blue_name)),
                 new Pair<>(viewHolder.binding.sampleName, activity.getString(R.string.sample_blue_title)));
         startActivity(target, pairs, sample);
     }
 
-    private void startActivity(Class target, Pair<View, String>[] pairs, Sample sample) {
+    private void startActivity(Class target, Pair<View, String>[] pairs, Sample sample)
+    {
         Intent i = new Intent(activity, target);
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pairs);
         i.putExtra("sample", sample);
@@ -81,15 +92,18 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
     }
 
     @Override
-    public int getItemCount() {
+    public int getItemCount()
+    {
         return samples.size();
     }
 
 
-    public class SamplesViewHolder extends RecyclerView.ViewHolder {
+    public class SamplesViewHolder extends RecyclerView.ViewHolder
+    {
         final RowSampleBinding binding;
 
-        public SamplesViewHolder(View rootView) {
+        public SamplesViewHolder(View rootView)
+        {
             super(rootView);
             binding = DataBindingUtil.bind(rootView);
 
