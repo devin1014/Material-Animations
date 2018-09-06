@@ -16,14 +16,11 @@ import android.widget.ImageView;
  */
 public class SharedElementFragment1 extends Fragment
 {
-
     private static final String EXTRA_SAMPLE = "sample";
 
     public static SharedElementFragment1 newInstance(Sample sample)
     {
-
         Bundle args = new Bundle();
-
         args.putSerializable(EXTRA_SAMPLE, sample);
         SharedElementFragment1 fragment = new SharedElementFragment1();
         fragment.setArguments(args);

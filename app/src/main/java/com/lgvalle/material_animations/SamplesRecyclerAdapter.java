@@ -48,7 +48,7 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
                         transitionToActivity(TransitionActivity1.class, sample);
                         break;
                     case 1:
-                        transitionToActivity(SharedElementActivity.class, viewHolder, sample);
+                        transitionToActivity(ShareElementActivity2.class, viewHolder, sample);
                         break;
                     case 2:
                         transitionToActivity(AnimationsActivity1.class, sample);

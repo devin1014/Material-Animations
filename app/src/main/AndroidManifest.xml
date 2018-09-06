@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.lgvalle.material_animations">
+<manifest package="com.lgvalle.material_animations"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -15,6 +15,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".TransitionActivity1"
             android:theme="@style/MaterialAnimations.Red" />
@@ -27,7 +28,9 @@
         <activity
             android:name=".SharedElementActivity"
             android:theme="@style/MaterialAnimations.Blue" />
-
+        <activity
+            android:name=".ShareElementActivity2"
+            android:theme="@style/MaterialAnimations.Blue" />
         <activity
             android:name=".AnimationsActivity1"
             android:theme="@style/MaterialAnimations.Green" />
@@ -35,10 +38,10 @@
         <activity
             android:name=".AnimationsActivity2"
             android:theme="@style/MaterialAnimations.Green" />
-
         <activity
             android:name=".RevealActivity"
             android:theme="@style/MaterialAnimations.Yellow" />
+
     </application>
 
 </manifest>
