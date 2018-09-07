@@ -12,12 +12,12 @@ import android.view.View;
  */
 public abstract class BaseDetailActivity extends AppCompatActivity
 {
-    static final String EXTRA_SAMPLE = "sample";
-    static final String EXTRA_TYPE = "type";
-    static final int TYPE_PROGRAMMATICALLY = 0;
-    static final int TYPE_XML = 1;
+    protected static final String EXTRA_SAMPLE = "sample";
+    protected static final String EXTRA_TYPE = "type";
+    protected static final int TYPE_PROGRAMMATICALLY = 0;
+    protected static final int TYPE_XML = 1;
 
-    void setupToolbar()
+    protected void setupToolbar()
     {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -33,7 +33,7 @@ public abstract class BaseDetailActivity extends AppCompatActivity
     }
 
     @SuppressWarnings("unchecked")
-    void transitionTo(Intent i)
+    protected void transitionTo(Intent i)
     {
         final Pair<View, String>[] pairs = TransitionHelper.createSafeTransitionParticipants(this, true);
         ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(this, pairs);

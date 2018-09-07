@@ -29,6 +29,7 @@
     <color name="sample_blue">#33b5e5</color>
     <color name="sample_green">#669900</color>
     <color name="sample_yellow">#ff8800</color>
+    <color name="sample_black">#000000</color>
 
 
     <!-- theme colors -->
@@ -66,6 +67,5 @@
     <color name="green">#00e676</color>
     <color name="red">#ff5252</color>
     <color name="light_grey">#E0E0E0</color>
-
 
 </resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="data"
+            type="liuwei.android.animation.demo.UIColor" />
+
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/list_content"
+            style="@style/MaterialAnimations"
+            android:layout_width="match_parent"
+            android:layout_height="256dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:backgroundColor="@{data.background}">
+
+            <ImageView
+                android:id="@+id/image_left"
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:contentDescription="@null"
+                app:color="@{data.left}" />
+
+            <TextView
+                android:id="@+id/position"
+                android:layout_width="96dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="@{data.data}"
+                android:textSize="16dp"
+                tools:ignore="SpUsage" />
+
+            <ImageView
+                android:id="@+id/image_right"
+                android:layout_width="124dp"
+                android:layout_height="124dp"
+                android:contentDescription="@null"
+                app:color="@{data.right}" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</layout>

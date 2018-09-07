@@ -29,9 +29,6 @@
             android:name=".SharedElementActivity"
             android:theme="@style/MaterialAnimations.Blue" />
         <activity
-            android:name=".ShareElementActivity2"
-            android:theme="@style/MaterialAnimations.Blue" />
-        <activity
             android:name=".AnimationsActivity1"
             android:theme="@style/MaterialAnimations.Green" />
 
@@ -41,6 +38,14 @@
         <activity
             android:name=".RevealActivity"
             android:theme="@style/MaterialAnimations.Yellow" />
+
+        <activity
+            android:name="liuwei.android.animation.demo.RecyclerTransitionActivity"
+            android:theme="@style/MaterialAnimations" />
+
+        <activity
+            android:name="liuwei.android.animation.demo.transitionfragment.TransitionFragmentActivity"
+            android:theme="@style/MaterialAnimations" />
 
     </application>
 
