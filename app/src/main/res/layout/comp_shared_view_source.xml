@@ -6,12 +6,12 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/shared_target"
+        android:id="@+id/image"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_margin="64dp"
-        android:src="@drawable/pic_cat"
+        android:src="@drawable/pic_1"
         android:transitionName="@string/transition_image" />
 
 </FrameLayout>

@@ -1,34 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:id="@+id/shared_target"
+<RelativeLayout
+    android:id="@+id/image_group"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_gravity="top|center_horizontal"
-    android:gravity="center"
     android:orientation="vertical"
     android:transitionName="@string/transition_group">
 
+    <View
+        android:id="@+id/anchor_center_h"
+        android:layout_width="1px"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true" />
+
     <ImageView
+        android:id="@+id/group_image_1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top|center_horizontal"
+        android:layout_height="128dp"
+        android:layout_toLeftOf="@id/anchor_center_h"
         android:scaleType="centerCrop"
-        android:src="@drawable/pic_cat"
-        android:transitionName="@string/transition_image" />
+        android:src="@drawable/placekitten_1"
+        android:transitionName="@string/transition_image_1" />
 
     <ImageView
-        style="@style/MaterialAnimations.Icon.Big"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/circle_black_large" />
+        android:id="@+id/group_image_2"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_toRightOf="@id/anchor_center_h"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placekitten_2"
+        android:transitionName="@string/transition_image_2" />
 
     <ImageView
-        style="@style/MaterialAnimations.Icon.Big"
-        android:layout_width="96dp"
-        android:layout_height="96dp"
-        android:scaleType="fitCenter"
-        android:src="@drawable/circle_green_large" />
+        android:id="@+id/group_image_3"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_below="@id/group_image_1"
+        android:layout_toLeftOf="@id/anchor_center_h"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placekitten_3"
+        android:transitionName="@string/transition_image_3" />
 
-</LinearLayout>
+    <ImageView
+        android:id="@+id/group_image_4"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:layout_below="@id/group_image_2"
+        android:layout_toRightOf="@id/anchor_center_h"
+        android:scaleType="centerCrop"
+        android:src="@drawable/placekitten_4"
+        android:transitionName="@string/transition_image_4" />
+
+</RelativeLayout>

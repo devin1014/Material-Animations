@@ -4,42 +4,36 @@ import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
-import android.transition.ChangeBounds;
-import android.transition.ChangeImageTransform;
-import android.transition.ChangeTransform;
-import android.transition.Fade;
-import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.lgvalle.material_animations.BR;
 import com.lgvalle.material_animations.R;
-import com.lgvalle.material_animations.databinding.AdapterListItemBinding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
+import liuwei.android.animation.demo.core.FragmentTransactionCompat;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)
- * Date: 2018-09-06
- * Time: 15:58
+ * Date: 2018-09-10
+ * Time: 19:33
  */
-public class RecyclerTransitionFragment extends Fragment
+public class Transition2RecyclerFragment extends BaseFragment
 {
-    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState)
+    protected int getFragmentLayout()
     {
-        return inflater.inflate(R.layout.fragment_recycler_transition, container, false);
+        return R.layout.fragment_recycler_transition;
     }
 
     @Override
@@ -56,9 +50,14 @@ public class RecyclerTransitionFragment extends Fragment
         recyclerView.setAdapter(new MyListAdapter());
     }
 
+    // ---------------------------------------------------------------------------------------------------------
+    // - Adapter
+    // ---------------------------------------------------------------------------------------------------------
     private class MyListAdapter extends Adapter<MyHolder>
     {
-        private List<UIColor> mDataList = new ArrayList<>(30);
+        private static final int COUNT = 10;
+
+        private List<UIColor> mDataList = new ArrayList<>(COUNT);
 
         private LayoutInflater mLayoutInflater = getLayoutInflater();
 
@@ -77,26 +76,29 @@ public class RecyclerTransitionFragment extends Fragment
             mColors[8] = getResources().getColor(R.color.theme_red_primary);
             mColors[9] = getResources().getColor(R.color.theme_yellow_primary);
 
-            Random random = new Random(10);
-
-            for (int i = 0; i < 30; i++)
+            for (int i = 0; i < COUNT; i++)
             {
-                int index = random.nextInt(10);
-
-                mDataList.add(new UIColor(String.valueOf(i), mColors[index], mColors[(index + 1) % 10], mColors[(index + 2) % 10]));
+                mDataList.add(new UIColor(String.valueOf(i), mColors[i % 10]));
             }
         }
 
         @Override
         public MyHolder onCreateViewHolder(ViewGroup parent, int viewType)
         {
-            return new MyHolder(DataBindingUtil.inflate(mLayoutInflater, R.layout.adapter_list_item, parent, false));
+            if (viewType % 2 == 0)
+            {
+                return new MyHolder(DataBindingUtil.inflate(mLayoutInflater, R.layout.adapter_list_item, parent, false));
+            }
+            else
+            {
+                return new MyHolder(DataBindingUtil.inflate(mLayoutInflater, R.layout.adapter_list_item_2, parent, false));
+            }
         }
 
         @Override
         public void onBindViewHolder(MyHolder holder, int position)
         {
-            holder.setData(mDataList.get(position));
+            holder.setData(mDataList.get(position), position);
         }
 
         @Override
@@ -104,13 +106,17 @@ public class RecyclerTransitionFragment extends Fragment
         {
             return mDataList.size();
         }
+
+        @Override
+        public int getItemViewType(int position)
+        {
+            return position;
+        }
     }
 
     private class MyHolder extends ViewHolder implements OnClickListener
     {
         private ViewDataBinding viewDataBinding;
-
-        private UIColor color;
 
         MyHolder(ViewDataBinding viewDataBinding)
         {
@@ -121,61 +127,22 @@ public class RecyclerTransitionFragment extends Fragment
             this.viewDataBinding.getRoot().setOnClickListener(this);
         }
 
-        public void setData(UIColor data)
+        public void setData(UIColor data, int position)
         {
-            color = data;
+            TransitionUtils.resetTransitionNameForRecyclerView(itemView, position);
 
-            ((AdapterListItemBinding) viewDataBinding).setData(data);
+            viewDataBinding.setVariable(BR.data, data);
 
             viewDataBinding.executePendingBindings();
-
-            itemView.findViewById(R.id.list_content).setTransitionName(getTransitionName("content", data));
-
-            itemView.findViewById(R.id.image_left).setTransitionName(getTransitionName("leftImage", data));
-
-            itemView.findViewById(R.id.image_right).setTransitionName(getTransitionName("rightImage", data));
         }
 
         @Override
         public void onClick(View v)
         {
-            showFragment(v, "content", color);
+            FragmentTransactionCompat.getInstance(getFragmentManager())
+                    .replaceWithSharedElement(R.id.fragment_content, new DetailFragment(), v, getLayoutPosition())
+                    .addToBackStack("DetailFragment")
+                    .commit();
         }
-    }
-
-    private String TRANSITION_NAME;
-
-    private String getTransitionName(String name, UIColor color)
-    {
-        if (TRANSITION_NAME == null)
-        {
-            TRANSITION_NAME = getResources().getString(R.string.transition_recycler);
-        }
-
-        return TRANSITION_NAME + name + color.getData();
-    }
-
-    private void showFragment(View transitionView, String name, UIColor color)
-    {
-        setExitTransition(new Fade());
-        TransitionSet transitionSet = new TransitionSet();
-        transitionSet.setOrdering(TransitionSet.ORDERING_TOGETHER);
-        transitionSet
-                .addTransition(new ChangeBounds())
-                .addTransition(new ChangeTransform())
-                .addTransition(new ChangeImageTransform());
-
-        DetailFragment fragment = DetailFragment.newInstance(color);
-        fragment.setEnterTransition(new Fade());
-        fragment.setSharedElementEnterTransition(transitionSet);
-        fragment.setSharedElementReturnTransition(transitionSet);
-        fragment.setAllowEnterTransitionOverlap(true);
-        fragment.setAllowReturnTransitionOverlap(false);
-
-        getFragmentManager().beginTransaction()
-                .replace(R.id.fragment_content, fragment)
-                .addToBackStack(null)
-                .addSharedElement(transitionView, getTransitionName(name, color))
-                .commit();
     }
 }

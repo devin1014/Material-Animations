@@ -13,38 +13,32 @@
     </data>
 
     <LinearLayout
-        android:id="@+id/list_content"
-        style="@style/MaterialAnimations"
+        android:id="@+id/image_parent"
         android:layout_width="match_parent"
         android:layout_height="128dp"
         android:foreground="?android:attr/selectableItemBackground"
-        android:gravity="center"
+        android:gravity="center_vertical|start"
         android:orientation="horizontal"
-        app:backgroundColor="@{data.background}">
+        app:backgroundColor="@{data.background}"
+        android:tag="11111"
+        tools:ignore="HardcodedText,SpUsage">
 
         <ImageView
-            android:id="@+id/image_left"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:contentDescription="@null"
-            app:color="@{data.left}" />
+            android:id="@+id/image"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pic_1"
+            android:transitionName="@string/transition_image" />
+
 
         <TextView
-            android:id="@+id/position"
-            android:layout_width="128dp"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:gravity="center"
-            android:padding="6dp"
-            android:text="@{data.data}"
-            android:textSize="16dp"
-            tools:ignore="SpUsage" />
-
-        <ImageView
-            android:id="@+id/image_right"
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:contentDescription="@null"
-            app:color="@{data.right}" />
+            android:text="过渡动画指定这只猫！"
+            android:textSize="12dp"
+            android:transitionName="@string/transition_image_text" />
 
     </LinearLayout>
 

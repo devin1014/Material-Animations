@@ -17,6 +17,12 @@ public class DataBindingAdapterCompat
         imageView.setBackgroundColor(color);
     }
 
+    @BindingAdapter({"image"})
+    public static void setImage(ImageView imageView, int imageRes)
+    {
+        imageView.setImageResource(imageRes);
+    }
+
     @BindingAdapter({"backgroundColor"})
     public static void setBackgroundColor(View view, int color)
     {

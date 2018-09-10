@@ -10,7 +10,13 @@
     <string name="transition_reveal1">transition_reveal1</string>
     <string name="transition_recycler">transition_recycler</string>
     <string name="transition_image">transition_image</string>
+    <string name="transition_image_text">transition_image_text</string>
     <string name="transition_group">transition_group</string>
+    <string name="transition_group_text">transition_group_text</string>
+    <string name="transition_image_1">transition_image_1</string>
+    <string name="transition_image_2">transition_image_2</string>
+    <string name="transition_image_3">transition_image_3</string>
+    <string name="transition_image_4">transition_image_4</string>
 
     <string name="sample_blue_title">sample_blue_title</string>
     <string name="long_text">Bacon ipsum dolor amet cupidatat bresaola minim, aliquip beef aute ea porchetta. Meatball brisket do, rump in beef ea ham hock spare ribs mollit qui dolore ipsum voluptate cow. Drumstick prosciutto salami duis jerky jowl. Mollit ball tip short ribs doner fugiat frankfurter leberkas andouille kevin pork loin nostrud ham culpa. Rump pariatur ham hock excepteur picanha pork. Corned beef flank proident shankle rump.</string>

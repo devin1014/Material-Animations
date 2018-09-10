@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,SpUsage">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        style="@style/MaterialAnimations.TextAppearance.Title"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/actionBarSize"
+        android:background="?android:attr/colorPrimary"
+        android:elevation="@dimen/elevation_header">
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/MaterialAnimations.TextAppearance.Title.Inverse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|start"
+            android:text="CustomTransitionActivity" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <RadioGroup
+        android:id="@+id/transition_group_load"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/transition_btn_load_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="Activity"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/transition_btn_load_fragment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fragment"
+            android:textSize="12dp" />
+
+        <RadioButton
+            android:id="@+id/transition_btn_load_recycler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recycler"
+            android:textSize="12dp" />
+
+    </RadioGroup>
+
+    <FrameLayout
+        android:id="@+id/fragment_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f0f0f0" />
+
+</LinearLayout>

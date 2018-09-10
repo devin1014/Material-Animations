@@ -14,8 +14,7 @@ import com.lgvalle.material_animations.databinding.RowSampleBinding;
 
 import java.util.List;
 
-import liuwei.android.animation.demo.RecyclerTransitionActivity;
-import liuwei.android.animation.demo.transitionfragment.TransitionFragmentActivity;
+import liuwei.android.animation.demo.CustomTransitionActivity;
 
 public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecyclerAdapter.SamplesViewHolder>
 {
@@ -60,10 +59,7 @@ public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecycler
                         transitionToActivity(RevealActivity.class, viewHolder, sample, R.string.transition_reveal1);
                         break;
                     case 4:
-                        transitionToActivity(RecyclerTransitionActivity.class, viewHolder, sample, R.string.transition_reveal1);
-                        break;
-                    case 5:
-                        transitionToActivity(TransitionFragmentActivity.class, viewHolder, sample, R.string.transition_reveal1);
+                        transitionToActivity(CustomTransitionActivity.class, viewHolder, sample);
                         break;
                 }
             }

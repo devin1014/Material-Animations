@@ -1,5 +1,7 @@
 package liuwei.android.animation.demo;
 
+import android.support.annotation.ColorInt;
+
 import java.io.Serializable;
 
 /**
@@ -9,38 +11,21 @@ import java.io.Serializable;
  */
 public class UIColor implements Serializable
 {
-    private int background;
-
-    private int left;
-
-    private int right;
-
     private String data;
 
-    public UIColor(String data, int background, int left, int right)
+    @ColorInt
+    private int background;
+
+    public UIColor(String data, @ColorInt int background)
     {
         this.data = data;
 
         this.background = background;
-
-        this.left = left;
-
-        this.right = right;
     }
 
     public int getBackground()
     {
         return background;
-    }
-
-    public int getLeft()
-    {
-        return left;
-    }
-
-    public int getRight()
-    {
-        return right;
     }
 
     public String getData()

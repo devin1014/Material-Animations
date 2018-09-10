@@ -44,8 +44,7 @@ public class MainActivity extends AppCompatActivity
                 new Sample(ContextCompat.getColor(this, R.color.sample_blue), "Shared Elements"),
                 new Sample(ContextCompat.getColor(this, R.color.sample_green), "View animations"),
                 new Sample(ContextCompat.getColor(this, R.color.sample_yellow), "Circular Reveal Animation"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_black), "Custom Page"),
-                new Sample(ContextCompat.getColor(this, R.color.sample_black), "Custom Page2")
+                new Sample(ContextCompat.getColor(this, R.color.sample_black), "Custom Transition")
         );
     }
 

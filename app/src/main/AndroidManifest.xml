@@ -40,12 +40,12 @@
             android:theme="@style/MaterialAnimations.Yellow" />
 
         <activity
-            android:name="liuwei.android.animation.demo.RecyclerTransitionActivity"
-            android:theme="@style/MaterialAnimations" />
+            android:name="liuwei.android.animation.demo.CustomTransitionActivity"
+            android:theme="@style/MaterialAnimations.Blue" />
 
         <activity
-            android:name="liuwei.android.animation.demo.transitionfragment.TransitionFragmentActivity"
-            android:theme="@style/MaterialAnimations" />
+            android:name="liuwei.android.animation.demo.DetailActivity"
+            android:theme="@style/MaterialAnimations.Red" />
 
     </application>
 
