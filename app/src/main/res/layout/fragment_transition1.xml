@@ -3,65 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/sample_blue"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/shared_target"
-        style="@style/MaterialAnimations.Icon.Small"
-        android:layout_gravity="bottom|center_horizontal"
-        android:layout_margin="48dp"
-        android:contentDescription="@null"
-        android:src="@drawable/circle_24dp"
-        android:transitionName="@string/transition_image" />
-
-    <!--<LinearLayout-->
-    <!--android:id="@+id/shared_target_content"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="64dp"-->
-    <!--android:layout_gravity="center|bottom"-->
-    <!--android:layout_margin="32dp"-->
-    <!--android:background="#aaffff00"-->
-    <!--android:gravity="center"-->
-    <!--android:orientation="horizontal"-->
-    <!--android:transitionGroup="true"-->
-    <!--android:transitionName="@string/transition_recycler">-->
-
-    <!--<ImageView-->
-    <!--android:id="@+id/image"-->
-    <!--android:layout_width="48dp"-->
-    <!--android:layout_height="48dp"-->
-    <!--android:contentDescription="@null"-->
-    <!--android:src="@drawable/circle_24dp"-->
-    <!--android:transitionName="@string/transition_image" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:padding="6dp"-->
-    <!--android:text="12"-->
-    <!--android:textSize="16dp" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:padding="6dp"-->
-    <!--android:text="Q1"-->
-    <!--android:textSize="16dp" />-->
-
-    <!--<TextView-->
-    <!--android:layout_width="wrap_content"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:padding="6dp"-->
-    <!--android:text="18"-->
-    <!--android:textSize="16dp" />-->
-
-    <!--<ImageView-->
-    <!--android:id="@+id/image2"-->
-    <!--android:layout_width="48dp"-->
-    <!--android:layout_height="48dp"-->
-    <!--android:contentDescription="@null"-->
-    <!--android:src="@drawable/circle_24dp" />-->
-
-    <!--</LinearLayout>-->
+    <include layout="@layout/comp_shared_viewgroup_source" />
 
 </FrameLayout>

@@ -31,7 +31,7 @@
                     android:id="@+id/shared_target"
                     style="@style/MaterialAnimations.Icon.Small"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/circle_24dp"
+                    android:src="@drawable/circle_black_small"
                     android:transitionName="@string/transition_reveal1"
                     app:colorTint="@{reveal1Sample.color}" />
 
@@ -67,7 +67,7 @@
                 android:id="@+id/square_green"
                 style="@style/MaterialAnimations.Icon.Medium.Scaled"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/circle_24dp"
+                android:src="@drawable/circle_black_small"
                 android:tint="@color/sample_green" />
 
             <ImageView
@@ -75,7 +75,7 @@
                 android:layout_toRightOf="@id/square_green"
                 style="@style/MaterialAnimations.Icon.Medium.Scaled"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/circle_24dp"
+                android:src="@drawable/circle_black_small"
                 android:tint="@color/sample_red" />
 
             <ImageView
@@ -83,7 +83,7 @@
                 android:layout_toRightOf="@id/square_red"
                 style="@style/MaterialAnimations.Icon.Medium.Scaled"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/circle_24dp"
+                android:src="@drawable/circle_black_small"
                 android:tint="@color/sample_blue" />
 
             <ImageView
@@ -91,7 +91,7 @@
                 android:layout_toRightOf="@id/square_blue"
                 style="@style/MaterialAnimations.Icon.Medium.Scaled"
                 android:layout_alignParentBottom="true"
-                android:src="@drawable/circle_24dp"
+                android:src="@drawable/circle_black_small"
                 android:tint="@color/sample_yellow" />
         </RelativeLayout>
 

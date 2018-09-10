@@ -24,7 +24,7 @@
             android:id="@+id/sample_icon"
             style="@style/MaterialAnimations.Icon.Small"
             android:contentDescription="@null"
-            android:src="@drawable/circle_24dp"
+            android:src="@drawable/circle_black_small"
             app:colorTint="@{sample.color}" />
 
         <TextView

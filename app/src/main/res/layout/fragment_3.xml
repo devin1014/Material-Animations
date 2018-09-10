@@ -22,7 +22,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:contentDescription="@null"
-            android:src="@drawable/circle_24dp" />
+            android:src="@drawable/circle_black_small" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -50,7 +50,7 @@
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:contentDescription="@null"
-            android:src="@drawable/circle_24dp" />
+            android:src="@drawable/circle_black_small" />
 
     </LinearLayout>
 

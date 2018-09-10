@@ -37,7 +37,7 @@
         <ImageView
             android:id="@+id/square_red"
             style="@style/MaterialAnimations.Icon.Big"
-            android:src="@drawable/circle_24dp"
+            android:src="@drawable/circle_black_small"
             app:colorTint="@{transition2Sample.color}" />
 
         <TextView

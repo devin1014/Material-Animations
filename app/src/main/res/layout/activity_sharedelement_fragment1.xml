@@ -8,7 +8,7 @@
     <ImageView
         android:id="@+id/square_blue"
         style="@style/MaterialAnimations.Icon.Big"
-        android:src="@drawable/circle_24dp"
+        android:src="@drawable/circle_black_small"
         android:transitionName="@string/square_blue_name" />
 
     <TextView

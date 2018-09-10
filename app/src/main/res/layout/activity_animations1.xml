@@ -37,7 +37,7 @@
         <ImageView
             android:id="@+id/square_green"
             style="@style/MaterialAnimations.Icon.Big"
-            android:src="@drawable/circle_24dp"
+            android:src="@drawable/circle_black_small"
             app:colorTint="@{animationsSample.color}" />
 
 

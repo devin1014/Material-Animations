@@ -11,8 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.Adapter;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.transition.ChangeBounds;
-import android.transition.Slide;
-import android.view.Gravity;
+import android.transition.ChangeImageTransform;
+import android.transition.ChangeTransform;
+import android.transition.Fade;
+import android.transition.TransitionSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -137,9 +139,7 @@ public class RecyclerTransitionFragment extends Fragment
         @Override
         public void onClick(View v)
         {
-            //showFragment(v, "content", color);
-
-            showFragment(v.findViewById(R.id.image_left), "leftImage", color);
+            showFragment(v, "content", color);
         }
     }
 
@@ -157,29 +157,22 @@ public class RecyclerTransitionFragment extends Fragment
 
     private void showFragment(View transitionView, String name, UIColor color)
     {
+        setExitTransition(new Fade());
+        TransitionSet transitionSet = new TransitionSet();
+        transitionSet.setOrdering(TransitionSet.ORDERING_TOGETHER);
+        transitionSet
+                .addTransition(new ChangeBounds())
+                .addTransition(new ChangeTransform())
+                .addTransition(new ChangeImageTransform());
+
         DetailFragment fragment = DetailFragment.newInstance(color);
-
-        //Explode enterTransition = new Explode();
-        //enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
-        Slide enterTransition = new Slide(Gravity.RIGHT);
-        enterTransition.setDuration(getResources().getInteger(R.integer.anim_duration_very_long));
-        //Slide exitTransition = new Slide(Gravity.BOTTOM);
-        //exitTransition.setDuration(getResources().getInteger(R.integer.anim_duration_medium));
-
-        //ChangeTransform change = new ChangeTransform();
-        //ChangeImageTransform change = new ChangeImageTransform();
-        ChangeBounds change = new ChangeBounds();
-        //ChangeClipBounds change = new ChangeClipBounds();
-        change.setDuration(getResources().getInteger(R.integer.anim_duration_very_long));
-
-        fragment.setEnterTransition(enterTransition);
-        //fragment.setExitTransition(enterTransition);
+        fragment.setEnterTransition(new Fade());
+        fragment.setSharedElementEnterTransition(transitionSet);
+        fragment.setSharedElementReturnTransition(transitionSet);
         fragment.setAllowEnterTransitionOverlap(true);
-        fragment.setAllowReturnTransitionOverlap(true);
-        fragment.setSharedElementEnterTransition(change);
-        //fragment.setSharedElementReturnTransition(change);
+        fragment.setAllowReturnTransitionOverlap(false);
 
-        getActivity().getSupportFragmentManager().beginTransaction()
+        getFragmentManager().beginTransaction()
                 .replace(R.id.fragment_content, fragment)
                 .addToBackStack(null)
                 .addSharedElement(transitionView, getTransitionName(name, color))
