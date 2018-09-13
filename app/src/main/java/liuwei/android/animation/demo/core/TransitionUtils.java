@@ -1,4 +1,4 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.core;
 
 import android.support.annotation.NonNull;
 import android.support.v4.util.Pair;

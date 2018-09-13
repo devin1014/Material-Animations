@@ -1,4 +1,4 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,6 +9,7 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.lgvalle.material_animations.R;
 
 import butterknife.BindView;
+import liuwei.android.animation.demo.ui.base.BaseActivity;
 import liuwei.android.animation.demo.core.FragmentTransactionCompat;
 
 /**

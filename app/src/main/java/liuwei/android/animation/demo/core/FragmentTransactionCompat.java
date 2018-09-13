@@ -20,8 +20,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import liuwei.android.animation.demo.TransitionUtils;
-
 /**
  * User: liuwei(wei.liu@neulion.com.com)
  * Date: 2018-09-12

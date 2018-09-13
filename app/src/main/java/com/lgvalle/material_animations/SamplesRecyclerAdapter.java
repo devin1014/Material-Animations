@@ -14,7 +14,7 @@ import com.lgvalle.material_animations.databinding.RowSampleBinding;
 
 import java.util.List;
 
-import liuwei.android.animation.demo.CustomTransitionActivity;
+import liuwei.android.animation.demo.ui.CustomTransitionActivity;
 
 public class SamplesRecyclerAdapter extends RecyclerView.Adapter<SamplesRecyclerAdapter.SamplesViewHolder>
 {

@@ -1,4 +1,4 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

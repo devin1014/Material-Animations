@@ -1,4 +1,4 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui;
 
 import android.databinding.DataBindingUtil;
 import android.databinding.ViewDataBinding;
@@ -21,7 +21,10 @@ import com.lgvalle.material_animations.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import liuwei.android.animation.demo.ui.base.BaseFragment;
+import liuwei.android.animation.demo.UIColor;
 import liuwei.android.animation.demo.core.FragmentTransactionCompat;
+import liuwei.android.animation.demo.core.TransitionUtils;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)

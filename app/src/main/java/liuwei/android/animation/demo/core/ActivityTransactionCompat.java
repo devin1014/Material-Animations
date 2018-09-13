@@ -7,8 +7,6 @@ import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.util.Pair;
 import android.view.View;
 
-import liuwei.android.animation.demo.TransitionUtils;
-
 /**
  * User: liuwei(wei.liu@neulion.com.com)
  * Date: 2018-09-13

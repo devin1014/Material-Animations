@@ -1,4 +1,4 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui;
 
 import android.view.View;
 
@@ -6,6 +6,7 @@ import com.lgvalle.material_animations.R;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import liuwei.android.animation.demo.ui.base.BaseFragment;
 import liuwei.android.animation.demo.core.FragmentTransactionCompat;
 
 /**

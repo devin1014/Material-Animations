@@ -1,9 +1,11 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.lgvalle.material_animations.R;
+
+import liuwei.android.animation.demo.ui.base.BaseActivity;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)

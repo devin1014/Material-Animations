@@ -1,4 +1,4 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui.base;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 import liuwei.android.animation.demo.core.FragmentTransactionCompat;
+import liuwei.android.animation.demo.core.TransitionUtils;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)

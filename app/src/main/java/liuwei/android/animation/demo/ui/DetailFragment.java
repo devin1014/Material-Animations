@@ -1,6 +1,8 @@
-package liuwei.android.animation.demo;
+package liuwei.android.animation.demo.ui;
 
 import com.lgvalle.material_animations.R;
+
+import liuwei.android.animation.demo.ui.base.BaseFragment;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)
