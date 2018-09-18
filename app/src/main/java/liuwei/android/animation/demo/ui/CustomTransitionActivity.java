@@ -9,8 +9,8 @@ import android.widget.RadioGroup.OnCheckedChangeListener;
 import com.lgvalle.material_animations.R;
 
 import butterknife.BindView;
-import liuwei.android.animation.demo.ui.base.BaseActivity;
 import liuwei.android.animation.demo.core.FragmentTransactionCompat;
+import liuwei.android.animation.demo.ui.base.BaseActivity;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)
@@ -65,6 +65,12 @@ public class CustomTransitionActivity extends BaseActivity
                 case R.id.transition_btn_load_recycler:
 
                     showFragment(new Transition2RecyclerFragment());
+
+                    break;
+
+                case R.id.transition_btn_load_group:
+
+                    showFragment(new TransitionGroupFragment());
 
                     break;
             }

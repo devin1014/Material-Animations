@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#aaff8800"
+    android:background="#77ff8800"
     android:gravity="start"
     android:orientation="vertical"
     tools:ignore="HardcodedText,SpUsage">
@@ -15,7 +15,9 @@
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:transitionGroup="true"
+        android:transitionName="@string/transition_group2">
 
         <TextView
             android:layout_width="wrap_content"
@@ -83,7 +85,9 @@
         android:layout_height="wrap_content"
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="end"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:transitionGroup="true"
+        android:transitionName="@string/transition_group">
 
         <TextView
             android:layout_width="wrap_content"

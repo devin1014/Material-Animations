@@ -20,7 +20,7 @@ public class TransitionUtils
     // ------------------------------------------------------------------------------------------------------------
     // - Parse view
     // ------------------------------------------------------------------------------------------------------------
-    public static List<View> parseTransitionView(@NonNull View rootView)
+    static List<View> parseTransitionView(@NonNull View rootView)
     {
         List<View> list = new ArrayList<>();
 
@@ -41,7 +41,7 @@ public class TransitionUtils
         return list;
     }
 
-    public static Pair<View, String>[] parseTransitionView2Pair(@NonNull View rootView)
+    static Pair<View, String>[] parseTransitionView2Pair(@NonNull View rootView)
     {
         List<View> list = parseTransitionView(rootView);
 
@@ -49,7 +49,7 @@ public class TransitionUtils
     }
 
     @SuppressWarnings("unchecked")
-    public static Pair<View, String>[] makeTransitionPair(List<View> views)
+    private static Pair<View, String>[] makeTransitionPair(List<View> views)
     {
         if (views == null || views.size() == 0)
         {
@@ -69,32 +69,50 @@ public class TransitionUtils
     // ------------------------------------------------------------------------------------------------------------
     // - RecyclerView
     // ------------------------------------------------------------------------------------------------------------
-    public static void resetTransitionNameForRecyclerView(View view, int position)
+    static void resetTransitionNameForRecyclerView(View view, int position)
     {
-        resetTransitionNameForRecyclerView(view, String.valueOf(position));
+        if (position >= 0)
+        {
+            resetTransitionNameForRecyclerView(view, String.valueOf(position));
+        }
     }
 
-    public static void resetTransitionNameForRecyclerView(View view, String suffix)
+    private static void resetTransitionNameForRecyclerView(View view, String suffix)
     {
-        if (view instanceof ViewGroup)
+        if (!TextUtils.isEmpty(suffix))
         {
-            ViewGroup viewGroup = (ViewGroup) view;
-
-            for (int i = 0; i < viewGroup.getChildCount(); i++)
+            if (view instanceof ViewGroup)
             {
-                View child = viewGroup.getChildAt(i);
+                ViewGroup viewGroup = (ViewGroup) view;
 
-                resetTransitionNameForRecyclerView(child, suffix);
+                for (int i = 0; i < viewGroup.getChildCount(); i++)
+                {
+                    View child = viewGroup.getChildAt(i);
+
+                    resetTransitionNameForRecyclerView(child, suffix);
+                }
+            }
+            else
+            {
+                String transitionName = getTransitionName(view);
+
+                if (!TextUtils.isEmpty(transitionName))
+                {
+                    ViewCompat.setTransitionName(view, transitionName + "#" + suffix);
+                }
             }
         }
-        else
-        {
-            String transitionName = ViewCompat.getTransitionName(view);
+    }
 
-            if (!TextUtils.isEmpty(transitionName))
-            {
-                ViewCompat.setTransitionName(view, transitionName + "#" + suffix);
-            }
+    private static String getTransitionName(View view)
+    {
+        String transitionName = ViewCompat.getTransitionName(view);
+
+        if (!TextUtils.isEmpty(transitionName) && transitionName.contains("#"))
+        {
+            return transitionName.substring(0, transitionName.indexOf("#"));
         }
+
+        return transitionName;
     }
 }

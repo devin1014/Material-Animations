@@ -1,13 +1,19 @@
 package liuwei.android.animation.demo.ui;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.lgvalle.material_animations.R;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import liuwei.android.animation.demo.ui.base.BaseFragment;
+import liuwei.android.animation.demo.Datas;
 import liuwei.android.animation.demo.core.ActivityTransactionCompat;
+import liuwei.android.animation.demo.ui.base.BaseFragment;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)
@@ -20,11 +26,24 @@ public class Transition2ActivityFragment extends BaseFragment
     View mImageContainer;
     @BindView(R.id.image_group_parent)
     View mImageGroupContainer;
+    @BindView(R.id.image)
+    ImageView mImageView;
 
     @Override
     protected int getFragmentLayout()
     {
         return R.layout.fragment_transition2activity;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState)
+    {
+        super.onViewCreated(view, savedInstanceState);
+
+        //noinspection ConstantConditions
+        Glide.with(getActivity())
+                .load(Datas.IMAGE_URL_1)
+                .into(mImageView);
     }
 
     @OnClick(R.id.btn_share_all_element)

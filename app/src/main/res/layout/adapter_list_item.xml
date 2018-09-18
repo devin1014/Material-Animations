@@ -19,8 +19,8 @@
         android:foreground="?android:attr/selectableItemBackground"
         android:gravity="center_vertical|start"
         android:orientation="horizontal"
-        app:backgroundColor="@{data.background}"
         android:tag="11111"
+        app:backgroundColor="@{data.background}"
         tools:ignore="HardcodedText,SpUsage">
 
         <ImageView
@@ -28,7 +28,6 @@
             android:layout_width="128dp"
             android:layout_height="128dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/pic_1"
             android:transitionName="@string/transition_image" />
 
 

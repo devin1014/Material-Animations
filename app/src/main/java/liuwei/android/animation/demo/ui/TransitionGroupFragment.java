@@ -12,10 +12,10 @@ import liuwei.android.animation.demo.ui.base.BaseFragment;
 
 /**
  * User: liuwei(wei.liu@neulion.com.com)
- * Date: 2018-09-10
- * Time: 19:31
+ * Date: 2018-09-13
+ * Time: 14:56
  */
-public class Transition2FragmentFragment extends BaseFragment
+public class TransitionGroupFragment extends BaseFragment
 {
     @BindView(R.id.image_parent)
     View mImageContainer;
@@ -25,16 +25,7 @@ public class Transition2FragmentFragment extends BaseFragment
     @Override
     protected int getFragmentLayout()
     {
-        return R.layout.fragment_transition2fragment;
-    }
-
-    @OnClick(R.id.btn_share_all_element)
-    public void onShareAllElementClick()
-    {
-        FragmentTransactionCompat.getInstance(getFragmentManager())
-                .replaceWithSharedElement(R.id.fragment_content, DetailFragment.newInstance(Datas.IMAGE_URL_1))
-                .addToBackStack("DetailFragment")
-                .commit();
+        return R.layout.fragment_transition_group;
     }
 
     @OnClick(R.id.image_parent)

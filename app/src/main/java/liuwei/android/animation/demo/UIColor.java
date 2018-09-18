@@ -13,12 +13,16 @@ public class UIColor implements Serializable
 {
     private String data;
 
+    private String image;
+
     @ColorInt
     private int background;
 
-    public UIColor(String data, @ColorInt int background)
+    public UIColor(String data, String image, @ColorInt int background)
     {
         this.data = data;
+
+        this.image = image;
 
         this.background = background;
     }
@@ -31,5 +35,10 @@ public class UIColor implements Serializable
     public String getData()
     {
         return data;
+    }
+
+    public String getImage()
+    {
+        return image;
     }
 }

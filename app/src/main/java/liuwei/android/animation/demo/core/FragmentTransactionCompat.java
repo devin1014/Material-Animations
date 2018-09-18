@@ -1,14 +1,14 @@
 package liuwei.android.animation.demo.core;
 
 import android.annotation.SuppressLint;
+import android.os.Build.VERSION;
+import android.os.Build.VERSION_CODES;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewCompat;
-import android.support.v7.app.AppCompatActivity;
-import android.text.TextUtils;
 import android.transition.ChangeBounds;
 import android.transition.ChangeImageTransform;
 import android.transition.ChangeTransform;
@@ -25,10 +25,10 @@ import java.util.Set;
  * Date: 2018-09-12
  * Time: 15:59
  */
-public class FragmentTransactionCompat extends FragmentTransactionWrapper
+public class FragmentTransactionCompat extends FragmentTransactionWrapper implements ITransitionCompat
 {
     @SuppressLint("CommitTransaction")
-    public static FragmentTransactionCompat getInstance(AppCompatActivity activity)
+    public static FragmentTransactionCompat getInstance(FragmentActivity activity)
     {
         return new FragmentTransactionCompat(activity.getSupportFragmentManager());
     }
@@ -45,30 +45,77 @@ public class FragmentTransactionCompat extends FragmentTransactionWrapper
         return new FragmentTransactionCompat(fragmentManager);
     }
 
+    // ---------------------------------------------------------------------------------------------------------
+    // - content
+    // ---------------------------------------------------------------------------------------------------------
     private FragmentTransactionCompat(FragmentManager manager)
     {
         super(manager);
     }
 
-    @Override
-    public FragmentTransaction replace(int containerViewId, Fragment fragment)
+    public FragmentTransaction replaceWithSharedElement(int containerViewId, Fragment fragment)
     {
-        return replace(containerViewId, fragment, getFragmentTag(fragment));
+        Fragment currFragment = getFragmentManager().findFragmentById(containerViewId);
+
+        return replaceWithSharedElement(containerViewId, fragment, currFragment != null ? currFragment.getView() : null);
     }
 
-    @Override
-    public FragmentTransaction replace(int containerViewId, Fragment fragment, @Nullable String tag)
+    public FragmentTransaction replaceWithSharedElement(int containerViewId, Fragment fragment, View sharedElement)
     {
-        return super.replace(containerViewId, fragment, tag);
+        return replaceWithSharedElement(containerViewId, fragment, sharedElement, -1);
     }
 
-    @Override
-    public FragmentTransaction addSharedElement(View sharedElement, String name)
+    public FragmentTransaction replaceWithSharedElement(int containerViewId, Fragment fragment, View sharedElement, int transitionNameTagSuffix)
     {
-        return super.addSharedElement(sharedElement, name);
+        resetFragmentTransitionObject(fragment);
+
+        if (transitionNameTagSuffix > -1)
+        {
+            TransitionUtils.resetTransitionNameForRecyclerView(sharedElement, transitionNameTagSuffix);
+
+            Bundle bundle = new Bundle();
+
+            if (fragment.getArguments() != null)
+            {
+                bundle.putAll(fragment.getArguments());
+            }
+
+            bundle.putInt(KEY_EXTRA_TRANSITION_TAG_SUFFIX, transitionNameTagSuffix);
+
+            fragment.setArguments(bundle);
+        }
+
+        replace(containerViewId, fragment);
+
+        addSharedElementWithTransitionName(sharedElement);
+
+        return this;
     }
 
-    public FragmentTransaction addSharedElementWithTransitionName(View sharedElement)
+    private void resetFragmentTransitionObject(Fragment fragment)
+    {
+        if (VERSION.SDK_INT >= VERSION_CODES.LOLLIPOP)
+        {
+            if (fragment != null && fragment.getSharedElementEnterTransition() == null)
+            {
+                TransitionSet transitionSet = new TransitionSet();
+                transitionSet.setOrdering(TransitionSet.ORDERING_TOGETHER);
+                transitionSet
+                        .addTransition(new ChangeBounds())
+                        .addTransition(new ChangeTransform())
+                        .addTransition(new ChangeImageTransform());
+
+                fragment.setEnterTransition(new Fade());
+                fragment.setExitTransition(new Fade());
+                fragment.setSharedElementEnterTransition(transitionSet);
+                fragment.setSharedElementReturnTransition(transitionSet);
+                fragment.setAllowEnterTransitionOverlap(true);
+                fragment.setAllowReturnTransitionOverlap(true);
+            }
+        }
+    }
+
+    private void addSharedElementWithTransitionName(View sharedElement)
     {
         if (sharedElement != null)
         {
@@ -91,99 +138,30 @@ public class FragmentTransactionCompat extends FragmentTransactionWrapper
                 }
             }
         }
-
-        return this;
     }
 
-    public FragmentTransaction replaceWithSharedElement(int containerViewId, Fragment fragment)
+    public static void resetFragmentLayoutTransitionName(Fragment fragment)
     {
-        Fragment currFragment = getFragmentManager().findFragmentById(containerViewId);
-
-        return replaceWithSharedElement(containerViewId, fragment, currFragment != null ? currFragment.getView() : null);
-    }
-
-    public FragmentTransaction replaceWithSharedElement(int containerViewId, Fragment fragment, View sharedElement)
-    {
-        return replaceWithSharedElement(containerViewId, fragment, sharedElement, -1);
-    }
-
-    private static final String KEY_EXTRA_RECYCLER_ITEM_POSITION = "FragmentTransactionCompat.key.extra.itemPosition";
-
-    public FragmentTransaction replaceWithSharedElement(int containerViewId, Fragment fragment, View sharedElement, int recyclerItemPosition)
-    {
-        resetFragmentTransitionObject(fragment);
-
-        if (recyclerItemPosition > -1)
-        {
-            Bundle bundle = new Bundle();
-
-            if (fragment.getArguments() != null)
-            {
-                bundle.putAll(fragment.getArguments());
-            }
-
-            bundle.putInt(KEY_EXTRA_RECYCLER_ITEM_POSITION, recyclerItemPosition);
-
-            fragment.setArguments(bundle);
-        }
-
-        replace(containerViewId, fragment);
-
-        addSharedElementWithTransitionName(sharedElement);
-
-        return this;
-    }
-
-    public static int getRecyclerItemPosition(Fragment fragment)
-    {
-        if (fragment != null && fragment.getArguments() != null)
+        if (fragment != null)
         {
             Bundle bundle = fragment.getArguments();
 
-            if (bundle.containsKey(KEY_EXTRA_RECYCLER_ITEM_POSITION))
+            int transitionNameTagSuffix = bundle != null ? bundle.getInt(KEY_EXTRA_TRANSITION_TAG_SUFFIX, -1) : -1;
+
+            if (transitionNameTagSuffix == -1 && fragment.getActivity() != null)
             {
-                return bundle.getInt(KEY_EXTRA_RECYCLER_ITEM_POSITION, -1);
+                transitionNameTagSuffix = fragment.getActivity().getIntent().getIntExtra(KEY_EXTRA_TRANSITION_TAG_SUFFIX, -1);
             }
-        }
 
-        return -1;
+            resetLayoutTransitionName(fragment.getView(), transitionNameTagSuffix);
+        }
     }
 
-    private void resetFragmentTransitionObject(Fragment fragment)
+    public static void resetLayoutTransitionName(View view, int transitionNameTagSuffix)
     {
-        if (fragment != null && fragment.getSharedElementEnterTransition() == null)
+        if (transitionNameTagSuffix > -1)
         {
-            TransitionSet transitionSet = new TransitionSet();
-            transitionSet.setOrdering(TransitionSet.ORDERING_TOGETHER);
-            transitionSet
-                    .addTransition(new ChangeBounds())
-                    .addTransition(new ChangeTransform())
-                    .addTransition(new ChangeImageTransform());
-
-            fragment.setEnterTransition(new Fade());
-            fragment.setExitTransition(new Fade());
-            fragment.setSharedElementEnterTransition(transitionSet);
-            fragment.setSharedElementReturnTransition(transitionSet);
-            fragment.setAllowEnterTransitionOverlap(true);
-            fragment.setAllowReturnTransitionOverlap(true);
+            TransitionUtils.resetTransitionNameForRecyclerView(view, transitionNameTagSuffix);
         }
     }
-
-    private String getFragmentTag(Fragment fragment)
-    {
-        if (fragment == null)
-        {
-            return null;
-        }
-
-        String tag = fragment.getTag();
-
-        if (TextUtils.isEmpty(tag))
-        {
-            tag = fragment.getClass().getSimpleName();
-        }
-
-        return tag;
-    }
-
 }
