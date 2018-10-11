@@ -5,7 +5,7 @@ import android.support.annotation.ColorInt;
 import java.io.Serializable;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-06
  * Time: 14:30
  */

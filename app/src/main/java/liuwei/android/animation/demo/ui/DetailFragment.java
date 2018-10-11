@@ -17,7 +17,7 @@ import butterknife.BindView;
 import liuwei.android.animation.demo.ui.base.BaseFragment;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-11
  * Time: 11:58
  */

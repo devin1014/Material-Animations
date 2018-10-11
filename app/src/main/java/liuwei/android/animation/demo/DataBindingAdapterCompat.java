@@ -5,7 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-06
  * Time: 14:54
  */

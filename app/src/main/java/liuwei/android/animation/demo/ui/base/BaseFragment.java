@@ -13,7 +13,7 @@ import butterknife.Unbinder;
 import liuwei.android.animation.demo.core.FragmentTransactionCompat;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-10
  * Time: 18:46
  */

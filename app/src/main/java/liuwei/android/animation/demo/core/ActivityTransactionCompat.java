@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.Window;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-13
  * Time: 11:11
  */

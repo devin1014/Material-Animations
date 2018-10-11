@@ -13,7 +13,7 @@ import liuwei.android.animation.demo.core.FragmentTransactionCompat;
 import liuwei.android.animation.demo.ui.base.BaseActivity;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-10
  * Time: 15:26
  */

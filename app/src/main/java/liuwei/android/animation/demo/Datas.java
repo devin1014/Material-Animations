@@ -1,7 +1,7 @@
 package liuwei.android.animation.demo;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-18
  * Time: 17:34
  */

@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-12
  * Time: 15:46
  */

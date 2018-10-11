@@ -5,7 +5,7 @@ import android.view.View;
 import java.io.Serializable;
 
 /**
- * User: liuwei(wei.liu@neulion.com.com)
+ * User: liuwei
  * Date: 2018-09-04
  * Time: 18:32
  */
